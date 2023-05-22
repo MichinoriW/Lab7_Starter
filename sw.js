@@ -43,7 +43,7 @@ self.addEventListener('fetch', function (event) {
   // Is this a request for an image?
   if (event.request.destination === 'image') {
     // Open the cache
-    event.respondWith(caches.open(cacheName).then((cache) => {
+    event.respondWith(caches.open(CACHE_NAME).then((cache) => {
       // Respond with the image from the cache or from the network
       return cache.match(event.request).then((cachedResponse) => {
         return cachedResponse || fetch(event.request.url).then((fetchedResponse) => {
